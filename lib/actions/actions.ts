@@ -16,8 +16,8 @@ export const getProducts = async () => {
 }
 
 export const getProductDetails = async (productId: string) => {
-  const product = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`)
-  return await product.json()
+  const product = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`).then((response) =>{return response.data}).catch((error) =>(console.error(error)));
+  return product
 }
 
 export const getSearchedProducts = async (query: string) => {
@@ -26,11 +26,11 @@ export const getSearchedProducts = async (query: string) => {
 }
 
 export const getOrders = async (customerId: string) => {
-  const orders = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders/customers/${customerId}`)
-  return await orders.json()
+  const orders = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/orders/customers/${customerId}`).then((response) =>{return response.data}).catch((error) =>(console.error(error)));
+  return orders
 }
 
 export const getRelatedProducts = async (productId: string) => {
-  const relatedProducts = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}/related`)
-  return await relatedProducts.json()
+  const relatedProducts = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}/related`).then((response) =>{return response.data}).catch((error) =>(console.error(error)));
+  return relatedProducts
 }

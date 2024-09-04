@@ -11,17 +11,17 @@ const CollectionDetails = async ({
   const collectionDetails = await getCollectionDetails(params.collectionId);
 
   return (
-    <div className="px-10 py-5 flex flex-col items-center gap-8">
+    <div className="sm:px-10 p-1 py-5 flex flex-col items-center gap-8">
       <Image
         src={collectionDetails.image}
         width={1500}
         height={1000}
         alt="collection"
-        className="w-full h-[400px] object-fill rounded-xl"
+        className="w-full h-[300px] md:h-[450px] object-fill rounded-xl"
       />
       <p className="text-heading3-bold text-grey-2">{collectionDetails.title}</p>
       <p className="text-body-normal text-grey-2 text-center max-w-[900px]">{collectionDetails.description}</p>
-      <div className="flex flex-wrap gap-16 justify-center">
+      <div className="flex flex-wrap  gap-6 sm:gap-10 justify-center">
         {collectionDetails.products.map((product: ProductType) => (
           <ProductCard key={product._id} product={product} />
         ))}

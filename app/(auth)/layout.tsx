@@ -7,7 +7,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Borcelle - Store Auth",
+  title: "Buyzaar - Store Auth",
   description: "Next.js 14 Borcelle Ecommerce store",
 };
 

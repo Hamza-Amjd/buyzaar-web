@@ -1,7 +1,8 @@
 "use client"
 
 import { useUser } from "@clerk/nextjs";
-import { Heart } from "lucide-react";
+import axios from "axios";
+import { Bookmark, Heart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -20,10 +21,7 @@ const HeartFavorite = ({ product, updateSignedInUser }: HeartFavoriteProps) => {
   const getUser = async () => {
     try {
       setLoading(true);
-      const res = await fetch("/api/users");
-      const data = await res.json();
-      setIsLiked(data.wishlist.includes(product._id));
-      setLoading(false);
+      await axios.get("/api/users").then((response) =>{setIsLiked(response.data.wishlist.includes(product._id))}).catch((error) =>(console.error(error))).finally(()=>setLoading(false));
     } catch (err) {
       console.log("[users_GET]", err);
     }
@@ -57,7 +55,7 @@ const HeartFavorite = ({ product, updateSignedInUser }: HeartFavoriteProps) => {
 
   return (
     <button onClick={handleLike}>
-      <Heart fill={`${isLiked ? "red" : "white"}`} />
+      <Bookmark fill={`${isLiked ? "orange" : "white"}`} />
     </button>
   );
 };

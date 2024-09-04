@@ -14,17 +14,17 @@ const ProductCard = ({ product, updateSignedInUser }: ProductCardProps ) => {
   return (
     <Link
       href={`/products/${product._id}`}
-      className="w-[220px] flex flex-col gap-2"
+      className="w-[160px] sm:w-[240px]  flex flex-col gap-2"
     >
       <Image
         src={product.media[0]}
         alt="product"
-        width={250}
-        height={300}
-        className="h-[250px] rounded-lg object-cover"
+        width={240}
+        height={260}
+        className="h-[180px] sm:h-[260px] rounded-lg object-cover"
       />
       <div>
-        <p className="text-base-bold">{product.title}</p>
+        <p className="text-base-bold">{product.title.length>25?product.title.slice(0,25):product.title}</p>
         <p className="text-small-medium text-grey-2">{product.category}</p>
       </div>
       <div className="flex justify-between items-center">

@@ -4,6 +4,7 @@ import Loader from "@/components/Loader"
 import ProductCard from "@/components/ProductCard"
 import { getProductDetails } from "@/lib/actions/actions"
 import { useUser } from "@clerk/nextjs"
+import axios from "axios"
 import { use, useEffect, useState } from "react"
 
 const Wishlist = () => {
@@ -14,14 +15,7 @@ const Wishlist = () => {
   const [wishlist, setWishlist] = useState<ProductType[]>([])
 
   const getUser = async () => {
-    try {
-      const res = await fetch("/api/users")
-      const data = await res.json()
-      setSignedInUser(data)
-      setLoading(false)
-    } catch (err) {
-      console.log("[users_GET", err)
-    }
+      await axios.get("/api/users").then((response) =>{setSignedInUser(response.data)}).catch((error) =>(console.error(error))).finally(()=>setLoading(false))
   }
 
   useEffect(() => {
@@ -35,7 +29,7 @@ const Wishlist = () => {
 
     if (!signedInUser) return
 
-    const wishlistProducts = await Promise.all(signedInUser.wishlist.map(async (productId) => {
+    const wishlistProducts = await Promise.all(signedInUser?.wishlist?.map(async (productId) => {
       const res = await getProductDetails(productId)
       return res
     }))
@@ -56,13 +50,13 @@ const Wishlist = () => {
 
 
   return loading ? <Loader /> : (
-    <div className="px-10 py-5">
-      <p className="text-heading3-bold my-10">Your Wishlist</p>
+    <div className="px-6 py-1">
+      <h1 className="text-heading2-bold my-10 sm:mx-4">Your Wishlist</h1>
       {wishlist.length === 0 && (
-        <p>No items in your wishlist</p>
+        <p className="text-base-medium text-center">No items in your wishlist</p>
       )}
 
-      <div className="flex flex-wrap justify-center gap-16">
+      <div className="flex flex-wrap justify-center  gap-6 sm:gap-10">
         {wishlist.map((product) => (
           <ProductCard key={product._id} product={product} updateSignedInUser={updateSignedInUser}/>
         ))}
