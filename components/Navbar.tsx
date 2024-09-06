@@ -68,6 +68,10 @@ const Navbar = () => {
       </div>
 
       <div className="relative flex gap-3 items-center">
+          {/* <Link href={'/'}>
+            <Image src="/download.png" alt="app download" height={80} width={120}/>
+          </Link> */}
+
         <Link
           href="/cart"
           className="flex items-center gap-3 border rounded-lg px-2 py-1 hover:bg-black hover:text-white max-md:hidden"

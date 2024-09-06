@@ -11,17 +11,20 @@ interface CartItem {
 
 interface CartStore {
   cartItems: CartItem[];
+  wishlist: ProductType[]; // items added to wishlist but not yet added to cart
   addItem: (item: CartItem) => void;
   removeItem: (idToRemove: string) => void;
   increaseQuantity: (idToIncrease: string) => void;
   decreaseQuantity: (idToDecrease: string) => void;
   clearCart: () => void;
+  toggleWishlist: (item:ProductType) => void;
 }
 
 const useCart = create(
   persist<CartStore>(
     (set, get) => ({
       cartItems: [],
+      wishlist:[],
       addItem: (data: CartItem) => {
         const { item, quantity, color, size } = data;
         const currentItems = get().cartItems; // all the items already in cart
@@ -62,6 +65,23 @@ const useCart = create(
         toast.success("Item quantity decreased");
       },
       clearCart: () => set({ cartItems: [] }),
+      toggleWishlist: (item: ProductType) => {
+        const wishlist = get().wishlist; // all the items already in cart
+        const isExisting = wishlist.find(
+          (wishlistitem) => wishlistitem?._id === item._id
+        );
+
+        if (isExisting) {
+          const newWishlist = get().wishlist.filter(
+            (wishlistItem) => wishlistItem._id !== item._id
+          );
+          set({ wishlist: newWishlist });
+          return toast.success("Item removed to wishlist"); 
+        }
+
+        set({ wishlist: [...wishlist, item] });
+        toast.success("Item added to wishlist");
+      },
     }),
     {
       name: "cart-storage",
@@ -71,4 +91,3 @@ const useCart = create(
 );
 
 export default useCart;
-

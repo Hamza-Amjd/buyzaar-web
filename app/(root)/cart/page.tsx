@@ -4,6 +4,7 @@ import useCart from "@/lib/hooks/useCart";
 import { numberWithCommas } from "@/utils/healper";
 
 import { useUser } from "@clerk/nextjs";
+import axios from "axios";
 import { MinusCircle, PlusCircle, Trash } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,24 +26,13 @@ const Cart = () => {
     email: user?.emailAddresses[0].emailAddress,
     name: user?.fullName,
   };
-  console.log("🚀 ~ Cart ~ customer:", customer)
   
   const handleCheckout = async () => {
-    try {
       if (!user) {
         router.push("sign-in");
       } else {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-          method: "POST",
-          body: JSON.stringify({ cartItems: cart.cartItems, customer }),
-        });
-        const data = await res.json();
-        window.location.href = data.url;
-        console.log(data);
+        await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, { cartItems: cart.cartItems, customer }).then((res)=>{console.log(res.data.url);window.location.href = res.data.url}).catch(err=>console.log(err))
       }
-    } catch (err) {
-      console.log("[checkout_POST]", err);
-    }
   };
 
   return (
