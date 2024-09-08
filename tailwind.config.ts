@@ -85,11 +85,25 @@ const config: Config = {
           fontWeight: "500",
         },
       ],
+      "xsmall-bold": [
+        "12px",
+        {
+          lineHeight: "140%",
+          fontWeight: "700",
+        },
+      ],
+      "xsmall-medium": [
+        "12px",
+        {
+          lineHeight: "140%",
+          fontWeight: "500",
+        },
+      ],
     },
     extend: {
       colors: {
         "red-1": "#FF0000",
-        "grey-1": "#F7F7F7",
+        "grey-1": "#f9f9f9",
         "grey-2": "#8A8A8A",
       },
     },

@@ -21,8 +21,8 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 z-10 py-2 px-10 flex gap-2 justify-between items-center bg-white max-sm:px-2">
       <Link href="/" className="flex items-center">
-        <Image src="/logo1.png" alt="logo" width={40} height={40} />
-        <Image src="/logo.png" alt="logo" width={130} height={130} className="hidden md:flex"  />
+        <Image src="/logo1.png" alt="logo" width={40} height={40} className="w-9 h-9 sm:w-10 sm:h-10" />
+        <Image src="/logo.png" alt="logo" width={130} height={130} className="w-20 h-7 sm:w-32 sm:h-8 hidden xs:flex"  />
       </Link>
 
       <div className="flex gap-4 text-base-bold max-lg:hidden">
@@ -54,7 +54,7 @@ const Navbar = () => {
 
       <div className="flex gap-3 border border-grey-2 px-3 py-1 items-center rounded-lg">
         <input
-          className="outline-none max-sm:max-w-[120px]"
+          className="outline-none max-sm:max-w-[200px]"
           placeholder="Search..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -68,9 +68,6 @@ const Navbar = () => {
       </div>
 
       <div className="relative flex gap-3 items-center">
-          {/* <Link href={'/'}>
-            <Image src="/download.png" alt="app download" height={80} width={120}/>
-          </Link> */}
 
         <Link
           href="/cart"

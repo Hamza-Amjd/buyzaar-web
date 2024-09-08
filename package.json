@@ -12,6 +12,7 @@
     "@clerk/nextjs": "^4.29.7",
     "@stripe/stripe-js": "^3.0.6",
     "axios": "^1.7.4",
+    "lottie-react": "^2.4.0",
     "lucide-react": "^0.341.0",
     "mongoose": "^8.2.0",
     "next": "^14.2.5",
