@@ -7,10 +7,10 @@ import cartbox from "@/public/emptybox.json";
 const Wishlist = () => {
   const cart = useCart();
   return (
-    <div className="px-0 py-1">
-      <h1 className="text-heading2-bold my-10 mx-4">Your Wishlist</h1>
+    <div className="px-10 py-5 max-sm:px-3">
+      <h1 className="text-heading2-bold my-10">Your Wishlist</h1>
       {cart.wishlist.length === 0 && (
-        <div className="text-body-semibold text-red-900 flex flex-col justify-center items-center gap-4 pb-24">
+        <div className="text-body-semibold flex flex-col justify-center items-center gap-4 pb-24">
           <Lottie animationData={cartbox} loop={false} className="w-64 h-64"/>
           <p >No items in your wishlist</p>
         </div>

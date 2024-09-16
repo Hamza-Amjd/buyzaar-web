@@ -1,23 +1,16 @@
 import { getOrders } from "@/lib/actions/actions";
 import { numberWithCommas } from "@/utils/healper";
-import cartbox from "@/public/emptybox.json";
 import { auth } from "@clerk/nextjs";
-import Lottie from "lottie-react";
 import Image from "next/image";
 import {
   CheckCircle,
   CircleEllipsis,
-  Eclipse,
-  Option,
-  OptionIcon,
-  ShieldEllipsis,
 } from "lucide-react";
 import Link from "next/link";
 
 const Orders = async () => {
   const { userId } = auth();
   const orders = await getOrders(userId as string);
-  console.log("🚀 ~ Orders ~ orders:", orders);
 
   return (
     <div className="px-10 py-5 max-sm:px-3">
