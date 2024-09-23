@@ -1,5 +1,5 @@
-// src/PrivacyPolicy.js
 
+import Link from 'next/link';
 import React from 'react';
 
 const PrivacyPolicy = () => {
@@ -69,9 +69,8 @@ const PrivacyPolicy = () => {
       </p>
       <p>
         Buyzaar  
-        hamzaamjad@gmail.com 
-        +92-306-4160969   
       </p>
+        <Link href="mailto:hamzaamjad294@gmail.com">hamzaamjad294@gmail.com</Link> 
     </div>
   );
 };

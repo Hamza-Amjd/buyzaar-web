@@ -10,13 +10,11 @@ const Footer = () => {
       <div className="flex flex-col items-center w-full my-10">
         <div className="flex flex-col items-center gap-6 mb-8">
           <div className="flex flex-wrap items-center justify-center gap-5 lg:gap-12 gap-y-3 lg:flex-nowrap text-dark-grey-900">
-            <a href="javascript:void(0)" className="text-gray-600 hover:text-gray-900">About</a>
-            <a href="javascript:void(0)" className="text-gray-600 hover:text-gray-900">Features</a>
-            <a href="javascript:void(0)" className="text-gray-600 hover:text-gray-900">Blog</a>
-            <a href="javascript:void(0)" className="text-gray-600 hover:text-gray-900">Resources</a>
-            <a href="javascript:void(0)" className="text-gray-600 hover:text-gray-900">Partners</a>
-            <a href="javascript:void(0)" className="text-gray-600 hover:text-gray-900">Help</a>
-            <a href="/policy" className="text-gray-600 hover:text-gray-900">Terms</a>
+            <a href="/site/about" className="text-gray-600 hover:text-gray-900">About</a>
+            <a href="/site/privacypolicy" className="text-gray-600 hover:text-gray-900">Privacy policy</a>
+            <a href="/site/about" className="text-gray-600 hover:text-gray-900">Partners</a>
+            <a href="/site/help" className="text-gray-600 hover:text-gray-900">Help</a>
+            <a href="/site/terms" className="text-gray-600 hover:text-gray-900">Terms of service</a>
           </div>
           <div className="flex items-center gap-8">
             <a href="javascript:void(0)" className="text-grey-700 hover:text-grey-900">
