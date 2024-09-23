@@ -17,7 +17,9 @@ const AppDownloadButton = () => {
         fill="red"
         stroke="white"
       />
-      <Link href={"/buyzaar.apk"}>
+      <Link href={"/buyzaar.apk"} target="_blank" onClick={() => {
+          setShowDownload(false);
+        }}>
         <Image
           src="/download1.png"
           alt="app download"
