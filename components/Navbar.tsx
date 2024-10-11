@@ -19,7 +19,7 @@ const Navbar = () => {
   const [query, setQuery] = useState("");
 
   return (
-    <div className="sticky top-0 z-10 py-2 px-10 flex gap-3 justify-between items-center bg-white max-sm:px-2">
+    <nav className="sticky top-0 z-10 py-2 px-10 flex gap-3 justify-between items-center bg-white max-sm:px-2 z-50">
       <Link href="/" className="flex items-center">
         <Image src="/logo1.png" alt="logo" width={40} height={40} className="w-9 h-9 sm:w-10 sm:h-10" />
         <Image src="/logo.png" alt="logo" width={130} height={30} className="w-24 h-6 sm:w-32 sm:h-8 hidden sm:flex"  />
@@ -84,7 +84,7 @@ const Navbar = () => {
         <span className={`h-0.5 rounded-sm  transition-all duration-300 ease-out w-5 bg-black ${dropdownMenu?"-rotate-45 -translate-y-1":"translate-y-0.5"}`}></span>
       </button>
         {dropdownMenu && (
-          <div className="absolute top-12 right-5 flex flex-col gap-4 p-3 rounded-lg border bg-white text-base-bold lg:hidden">
+          <div className="absolute top-12 right-5 flex flex-col gap-4 p-4 pr-6 rounded-lg border bg-white text-base-bold lg:hidden z-20">
             <Link href="/" className="hover:text-red-1">
               Home
             </Link>
@@ -120,7 +120,7 @@ const Navbar = () => {
           </Link>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 
