@@ -55,6 +55,19 @@ const Carousel: React.FC<CarouselProps> = ({ items, autoplayInterval }) => {
         onClick={nextSlide}
         className="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-1 sm:p-2 rounded-full z-10 cursor-pointer sm:right-4 size-[35px] md:size-[50px]"
       />
+      
+      {/* Dot indicators */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {items.map((_, index) => (
+          <button
+            key={index}
+            className={`w-3 h-3 rounded-full ${
+              index === currentIndex ? 'bg-white' : 'bg-white/50'
+            }`}
+            onClick={() => setCurrentIndex(index)}
+          />
+        ))}
+      </div>
     </div>
   )
 }
