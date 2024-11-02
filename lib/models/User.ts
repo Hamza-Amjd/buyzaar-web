@@ -6,6 +6,16 @@ const userSchema = new mongoose.Schema({
     type: Array,
     default: []
   },
+  addresses:[{
+    "title": String,
+    "address": String,
+    "coordinates": {"longitude":Number,"latitude":Number},
+    "city": String,
+    "country": String,
+    "countryCode": String,
+    "phoneNumber": String,
+    "postalCode": String,
+  }],
   createdAt: {
     type: Date,
     default: Date.now
