@@ -39,10 +39,10 @@ const OrderCard = ({ order }: { order: OrderType }) => {
           {dropdownOpen === order._id && (
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
               <div className="py-1">
-                <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <button  className="block w-full text-left px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">
                   View Order
                 </button>
-                <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <button disabled className="block w-full text-left px-4 py-2 text-sm text-gray-600">
                   View Invoice
                 </button>
               </div>
@@ -50,10 +50,10 @@ const OrderCard = ({ order }: { order: OrderType }) => {
           )}
         </div>
         <div className="md:flex gap-4 hidden">
-          <button className="p-2 border-slate-800 border-[1px] rounded-md text-small-medium hover:bg-grey-1">
+          <Link href={`/orders/${order._id}`} className="p-2 border-slate-800 border-[1px] rounded-md text-small-medium hover:bg-grey-1">
             View Order
-          </button>
-          <button className="p-2 border-slate-800 border-[1px] rounded-md text-small-medium hover:bg-grey-1">
+          </Link>
+          <button className="p-2 border-slate-500 border-[1px] rounded-md text-slate-600 text-small-medium">
             View Invoice
           </button>
         </div>
@@ -109,7 +109,7 @@ const OrderCard = ({ order }: { order: OrderType }) => {
                   View Product
                 </Link>
                 <Link
-                  href={"#"}
+                  href={`/orders/${orderItem._id}`}
                   className="text-base-bold text-blue-800 hover:text-blue-500"
                 >
                   Track Delivery

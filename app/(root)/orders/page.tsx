@@ -1,12 +1,6 @@
+"use server"
 import { getOrders } from "@/lib/actions/actions";
-import { numberWithCommas } from "@/utils/healper";
 import { auth } from "@clerk/nextjs";
-import Image from "next/image";
-import {
-  CheckCircle,
-  CircleEllipsis,
-} from "lucide-react";
-import Link from "next/link";
 import OrderCard from "@/components/OrderCard";
 
 const Orders = async () => {
@@ -33,5 +27,3 @@ const Orders = async () => {
 };
 
 export default Orders;
-
-export const dynamic = "force-dynamic";
