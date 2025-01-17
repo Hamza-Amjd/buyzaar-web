@@ -28,8 +28,21 @@ const ProductInfo = ({ productInfo }: { productInfo: ProductType }) => {
         <p className="text-base-medium text-grey-2">Category:</p>
         <p className="text-base-bold">{productInfo.category}</p>
       </div>
-
-      <p className="text-heading3-bold">Rs. {numberWithCommas(productInfo.price)}</p>
+      {productInfo.discount ? (
+        <div className="flex gap-2 align-baseline">
+          <p className="text-heading3-bold ">Rs</p>
+          <p className="text-heading4 line-through">
+            {numberWithCommas(productInfo.price)}
+          </p>
+          <p className="text-heading3-bold ">
+            {numberWithCommas(productInfo.price - productInfo.discount)}
+          </p>
+        </div>
+      ) : (
+        <p className="text-heading3-bold">
+          Rs. {numberWithCommas(productInfo.price)}
+        </p>
+      )}
 
       <div className="flex flex-col gap-2">
         <p className="text-base-medium text-grey-2">Description:</p>
@@ -74,8 +87,8 @@ const ProductInfo = ({ productInfo }: { productInfo: ProductType }) => {
         </div>
       )}
 
-      <div className="flex flex-col gap-2">
         <p className="text-base-medium text-grey-2">Quantity:</p>
+      <div className="flex flex-col self-center gap-2">
         <div className="flex gap-4 items-center">
           <MinusCircle
             className="hover:text-red-1 cursor-pointer"

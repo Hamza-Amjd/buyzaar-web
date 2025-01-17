@@ -1,5 +1,6 @@
 // src/Help.js
 
+import ContactForm from '@/components/ContactForm';
 import React from 'react';
 
 const Help = () => {
@@ -51,7 +52,9 @@ const Help = () => {
         <p>Phone: <a href="tel:+9223064160969" className="text-blue-600 hover:underline">+92 (306) 4160969</a></p>
         <p>Available: Mon - Fri, 9 AM - 5 PM ( GMT+05:00)</p>
       </div>
-
+      <h2 className="text-3xl font-semibold my-4">Send a message</h2>
+      <ContactForm/>
+      
     </div>
   );
 };

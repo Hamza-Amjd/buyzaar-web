@@ -8,7 +8,7 @@ const SearchPage = async ({ params }: { params: { query: string }}) => {
 
   return (
     <div className=' py-5'>
-      <p className='text-heading3-bold my-10 px-4'>Search results for {decodedQuery}</p>
+      <p className='text-heading3-bold my-10 px-4'>Search results for "{decodedQuery}"</p>
       {!searchedProducts || searchedProducts.length === 0 && (
         <p className='text-body-bold my-5 px-4'>No result found</p>
       )}

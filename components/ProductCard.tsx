@@ -10,7 +10,7 @@ interface ProductCardProps {
   updateSignedInUser?: (updatedUser: UserType) => void;
 }
 
-const ProductCard = ({ product, updateSignedInUser }: ProductCardProps ) => {
+const ProductCard = ({ product, updateSignedInUser }: ProductCardProps) => {
   return (
     <Link
       href={`/products/${product._id}`}
@@ -24,12 +24,29 @@ const ProductCard = ({ product, updateSignedInUser }: ProductCardProps ) => {
         className="h-[160px] sm:h-[260px] rounded-lg object-cover"
       />
       <div>
-        <p className="text-base-bold">{product.title.length>25?product.title.slice(0,25):product.title}</p>
+        <p className="text-base-bold">
+          {product.title.length > 25
+            ? product.title.slice(0, 25)
+            : product.title}
+        </p>
         <p className="text-small-medium text-grey-2">{product.category}</p>
       </div>
       <div className="flex justify-between items-center">
-        <p className="text-body-bold">Rs. {numberWithCommas(product.price)}</p>
-        <WishlistButton product={product} updateSignedInUser={updateSignedInUser} />
+        {product.discount ? (
+          <p className="text-body-bold text-orange-800 ">
+            Rs.{" "} 
+            <span className="text-base-medium text-grey-2 line-through">{numberWithCommas(product.price)+" "}</span>
+            {numberWithCommas(product.price - product.discount)}
+          </p>
+        ) : (
+          <p className="text-body-bold  text-orange-800">
+            Rs. {numberWithCommas(product.price)}
+          </p>
+        )}
+        <WishlistButton
+          product={product}
+          updateSignedInUser={updateSignedInUser}
+        />
       </div>
     </Link>
   );

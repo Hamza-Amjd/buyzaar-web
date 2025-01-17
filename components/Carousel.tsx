@@ -33,7 +33,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, autoplayInterval }) => {
     <div className="relative w-full h-full rounded-2xl">
       <ChevronLeft
         onClick={prevSlide}
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-1 sm:p-2 rounded-full z-10 cursor-pointer sm:left-4 size-[35px] md:size-[50px]"
+        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-10 hover:bg-opacity-40 text-white p-1 sm:p-2 rounded-full z-10 cursor-pointer sm:left-4 size-[35px] md:size-[50px]"
       />
       <div className="overflow-hidden">
         <div
@@ -53,7 +53,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, autoplayInterval }) => {
       </div>
       <ChevronRight
         onClick={nextSlide}
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-1 sm:p-2 rounded-full z-10 cursor-pointer sm:right-4 size-[35px] md:size-[50px]"
+        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-10 hover:bg-opacity-40 text-white p-1 sm:p-2 rounded-full z-10 cursor-pointer sm:right-4 size-[35px] md:size-[50px]"
       />
       
       {/* Dot indicators */}
