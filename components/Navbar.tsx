@@ -26,14 +26,14 @@ const Navbar = () => {
           alt="logo"
           width={40}
           height={40}
-          className="w-9 h-9 sm:w-10 sm:h-10"
+          className="w-9 h-9 sm:w-10 sm:h-10 sm:mr-2"
         />
         <Image
           src="/logo.png"
           alt="logo"
           width={130}
           height={30}
-          className="w-24 h-6 sm:w-32 sm:h-8 hidden sm:flex"
+          className="w-24 h-6 sm:w-32 sm:h-6 hidden sm:flex"
         />
       </Link>
 
