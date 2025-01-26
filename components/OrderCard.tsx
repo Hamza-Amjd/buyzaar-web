@@ -39,9 +39,9 @@ const OrderCard = ({ order }: { order: OrderType }) => {
           {dropdownOpen === order._id && (
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
               <div className="py-1">
-                <button  className="block w-full text-left px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">
+                <Link href={`/orders/${order._id}`}  className="block w-full text-left px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">
                   View Order
-                </button>
+                </Link>
                 <button disabled className="block w-full text-left px-4 py-2 text-sm text-gray-600">
                   View Invoice
                 </button>
