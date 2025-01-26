@@ -7,6 +7,7 @@ import React, { useState } from "react";
 const AppDownloadButton = () => {
   const [showDownload, setShowDownload] = useState(true);
   return (
+    <div className="fixed bottom-8 right-8">
     <div className={`w-42 h-20 ${showDownload ? "" : "hidden"} `}>
       <XCircle
         size={27}
@@ -17,7 +18,7 @@ const AppDownloadButton = () => {
         fill="red"
         stroke="white"
       />
-      <Link href={"/buyzaar.apk"} target="_blank" onClick={() => {
+      <Link href={`${process.env.APP_DOWNLOAD_URL}`} target="_blank" onClick={() => {
           setShowDownload(false);
         }}>
         <Image
@@ -28,6 +29,7 @@ const AppDownloadButton = () => {
           className="transition-all ease-in-out cursor-pointer hover:scale-110 active:scale-90"
         />
       </Link>
+    </div>
     </div>
   );
 };

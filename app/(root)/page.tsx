@@ -7,9 +7,7 @@ export default function Home() {
     <>
       <Collections />
       <ProductList />
-      <div className="fixed bottom-8 right-8">
-        <AppDownloadButton />
-      </div>
+      <AppDownloadButton />
     </>
   );
 }
