@@ -21,25 +21,21 @@ export const POST = async (req: NextRequest) => {
       return new NextResponse("User not found", { status: 404 })
     }
 
-    const { productId } = await req.json()
+    const { query } = await req.json()
 
-    if (!productId) {
-      return new NextResponse("Product Id required", { status: 400 })
+    if (!query) {
+      return new NextResponse("query required", { status: 400 })
     }
-
-    const isLiked = user.wishlist.includes(productId)
-
-    if (isLiked) {
-      // Dislike
-      user.wishlist = user.wishlist.filter((id: string) => id !== productId)
-    } else {
-      // Like
-      user.wishlist.push(productId)
-    }
+      const isStored = user.searchHistory.find((q: string) => q == query)
+      if(isStored){
+        return;
+      }else{
+        user.searchHistory.push(query)
+      }
 
     await user.save()
     
-    return NextResponse.json(user.wishlist, { status: 200 })
+    return NextResponse.json(user.searchHistory, { status: 200 })
   } catch (err) {
     console.log("[wishlist_POST]", err);
     return new NextResponse("Internal Server Error", { status: 500 });

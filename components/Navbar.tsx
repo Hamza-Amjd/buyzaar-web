@@ -1,5 +1,6 @@
 "use client";
 
+import { addToSearchHistory } from "@/lib/actions/actions";
 import useCart from "@/lib/hooks/useCart";
 
 import { UserButton, useUser } from "@clerk/nextjs";
@@ -7,7 +8,7 @@ import { CircleUserRound, Menu, Search, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -17,6 +18,13 @@ const Navbar = () => {
 
   const [dropdownMenu, setDropdownMenu] = useState(false);
   const [query, setQuery] = useState("");
+  // useEffect(() =>{
+  //   if(query.length>0) {
+  //     router.push(`/search/${query}`)
+  //   }else{
+  //     router.replace('/');
+  //   }
+  // },[query]);
 
   return (
     <nav className="sticky top-0 py-2 px-10 flex gap-3 justify-between items-center bg-white max-sm:px-2 z-50">
@@ -68,10 +76,16 @@ const Navbar = () => {
           placeholder="Search..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              router.push(`/search/${query}`);
+              addToSearchHistory(query);
+            }
+          }}
         />
         <button
           disabled={query === ""}
-          onClick={() => router.push(`/search/${query}`)}
+          onClick={() =>{ router.push(`/search/${query}`);addToSearchHistory(query)}}
         >
           <Search className="cursor-pointer h-4 w-4 hover:text-red-1" />
         </button>

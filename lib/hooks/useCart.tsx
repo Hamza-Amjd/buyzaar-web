@@ -17,6 +17,7 @@ interface CartStore {
   increaseQuantity: (idToIncrease: string) => void;
   decreaseQuantity: (idToDecrease: string) => void;
   clearCart: () => void;
+  setWishlist: (data:any) => void;
   toggleWishlist: (item:ProductType) => void;
 }
 
@@ -64,7 +65,8 @@ const useCart = create(
         set({ cartItems: newCartItems });
         toast.success("Item quantity decreased");
       },
-      clearCart: () => set({ cartItems: [] }),
+      clearCart: () => set({ cartItems: [],wishlist:[] }),
+      setWishlist: (data) => set({ wishlist:data}),
       toggleWishlist: (item: ProductType) => {
         const wishlist = get().wishlist; // all the items already in cart
         const isExisting = wishlist.find(

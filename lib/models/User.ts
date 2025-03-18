@@ -6,6 +6,10 @@ const userSchema = new mongoose.Schema({
     type: Array,
     default: []
   },
+  searchHistory: {
+    type: Array,
+    default: []
+  },
   addresses:[{
     "title": String,
     "address": String,

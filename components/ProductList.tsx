@@ -1,9 +1,10 @@
-import { getProducts } from "@/lib/actions/actions";
+import { getProducts, getRecomendedProducts } from "@/lib/actions/actions";
 import ProductCard from "./ProductCard";
 
 const ProductList = async () => {
   const products = await getProducts();
-
+  // const recomendations = await getRecomendedProducts()
+  // console.log(recomendations)
   return (
     <div className="flex flex-col items-center gap-10 py-8 px-5">
       {!products || products.length === 0 ? (

@@ -1,5 +1,6 @@
 "use client"
 
+import { toogleWishlistService } from "@/lib/actions/actions";
 import useCart from "@/lib/hooks/useCart";
 import { useUser } from "@clerk/nextjs";
 import axios from "axios";
@@ -37,10 +38,9 @@ const WishlistButton = ({ product, updateSignedInUser }: WishlistButtonProps) =>
       if (!user) {
         router.push("/sign-in");
         return;
-      } else {
-        // await axios.post("/api/users/wishlist",{ product: product._id }).then(response=>{updateSignedInUser && updateSignedInUser(response.data)})
-      }
+      } 
       cart.toggleWishlist(product)
+      console.log(await toogleWishlistService(product._id))
   };
 
   return (

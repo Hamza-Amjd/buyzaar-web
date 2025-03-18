@@ -17,12 +17,12 @@ const Carousel: React.FC<CarouselProps> = ({ items, autoplayInterval }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const nextSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length)
-  }, [items.length])
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % items?.length)
+  }, [items?.length])
 
   const prevSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length)
-  }, [items.length])
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + items?.length) % items.length)
+  }, [items?.length])
 
   useEffect(() => {
     const intervalId = setInterval(nextSlide, autoplayInterval)
@@ -40,7 +40,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, autoplayInterval }) => {
           className="flex transition-transform duration-300 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {items.map((item) => (
+          {items?.map((item) => (
             <Link href={`/collections/${items[currentIndex]._id}`} className="w-full flex-shrink-0" key={item._id}>
               <img 
                 src={item.image} 
@@ -58,7 +58,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, autoplayInterval }) => {
       
       {/* Dot indicators */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {items.map((_, index) => (
+        {items?.map((_, index) => (
           <button
             key={index}
             className={`w-3 h-3 rounded-full ${
